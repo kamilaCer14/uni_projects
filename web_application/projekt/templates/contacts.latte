@@ -1,0 +1,54 @@
+{extends layout.latte}
+
+
+{block title}Contact{/block}
+
+{block body}
+
+<div class="container mt-2 mb-2">
+        <h1 class="mb-2">{$formData['first_name']} {$formData['last_name']}</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h5><b>Contacts of {$formData['first_name']}<b></h5>
+                <br>
+                <table class="table">
+                     {if $contactData}
+                        {foreach $contactData as $contact}
+                           <tr>
+                                <th>{$contact['name']}</th>
+                                <td>
+                                        {$contact['contact']}
+                                </td>
+
+                                <td> 
+                                 <form method="post" onsubmit="return confirm('Do you really want to delete this contact?')" 
+                                       action="{link delete_contact}?id_contact={$contact['id_person']}">
+                                 <button class="btn-sm btn-danger">
+                                   <span class="fa fa-trash"></span> Delete
+                                 </button>
+                                </form>
+                              </td>
+                            </tr>
+                        {/foreach}
+                    {else}
+                        <tr>
+                            <td>There is no contact.</td>
+                        </tr>
+                    {/if}
+
+                </table>
+                <div class="form-group row mt-6">
+                    <div class="col-sm-12">
+                        <a href="{link newContact}?id_person={$formData['id_person']}" class="btn btn-secondary"><span class="fa fa-plus"></span>  Add a contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+            <div class="col-sm-5">
+                <a class="nav link" href="{link persons}"><span class="fa fa-users"></span> Back to the list</a>
+            </div>
+    
+</div>

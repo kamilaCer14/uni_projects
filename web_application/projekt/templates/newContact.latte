@@ -1,0 +1,43 @@
+{extends layout.latte}
+
+
+    {block title}Add a contact{/block}
+
+    {block body}
+
+    <!-- Sem vypiseme pripadnu hlasku -->
+        {if isset($message)}
+            <p>{$message}</p>
+        {/if}
+
+        <div class="container">
+            <h1>New Contact</h1>
+
+        <form action="{link newContact}" method="post">
+            <div class="form-row">
+                <!-- Type -->
+                <div class="col-md-6 form-group">    
+                    <label>Type</label>
+                     <select class="form-control" id="contact_type" name="contact_type">
+                        <option value=2>skype</option>
+                        <option value=5>jabber</option>
+                        <option value=6>web</option>
+                        <option value=1>facebook</option>
+                        <option value=4>email</option>
+                        <option value=3>tel</option>
+                     </select>
+                </div>
+                <!-- Contact -->
+                <div class="col-md-6 form-group">
+                    <label for="contact">Contact</label> 
+                    <input class="form-control" type="text" name="contact" id="contact" placeholder="input the name of the contact">
+                </div>
+            </div>
+    
+            <br>
+            <button type="submit" class="btn btn-success">
+                <span class="fa fa-plus"></span>Add a contact
+            </button>
+            </br>
+        </form>
+    </div>   

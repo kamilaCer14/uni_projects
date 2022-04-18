@@ -1,0 +1,30 @@
+  <xcervako_druhy druhy_id='1'>
+    <nazev>Monografie</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='2'>
+    <nazev>CD-ROM</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='3'>
+    <nazev>Závěrečná práce</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='4'>
+    <nazev>Disertační práce</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='5'>
+    <nazev>Audio</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='6'>
+    <nazev>DVD</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='7'>
+    <nazev>Video</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='8'>
+    <nazev>Elektronická kniha</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='9'>
+    <nazev>Periodikum</nazev>
+  </xcervako_druhy>
+  <xcervako_druhy druhy_id='10'>
+    <nazev>Rešerše</nazev>
+  </xcervako_druhy>

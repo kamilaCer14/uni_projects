@@ -1,0 +1,33 @@
+{extends layout.latte}
+
+{block title}
+	{$title}
+{/block}
+
+{block body}
+	<div class="container">
+		<h1>{$title}</h1>
+	<form method="post">
+            <div class="form-row">
+                <!-- Email -->
+                <div class="col-sm-6 form-group">    
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" name="email" placeholder="Email" required value="{$formData['email']}">
+                </div>
+                <!-- Password -->
+                <div class="col-sm-6 form-group">
+                    <label for="Password">Password</label> 
+                    <input class="form-control" type="password" name="Password" placeholder="Password" required value="{$formData['password']}">
+                </div>
+            </div>    
+               
+            <br>
+            <button type="submit" class="btn btn-success" style="height: 50px">
+                <span class="fa fa-plus"></span> Sign in
+            </button>
+            </br>
+        </form>
+    </div>   
+
+
+{/block}

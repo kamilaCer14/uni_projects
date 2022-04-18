@@ -1,0 +1,70 @@
+{extends layout.latte}
+
+
+{block title}Relations{/block}
+
+{block body}
+    <div class="container">
+        <form action="{link searchRelations}" method="get">
+            <label>Search:</label>
+            <input type="text" name="q" class="form-control">   
+            <br>
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+
+        </form>
+
+        <br>
+        <h1>{include title}</h1>
+        <br>
+        <table class="table table-striped">
+            {if $relations_list<>null}
+                <tr>
+                    <th>First person</th>
+                    <th>Second person</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Delete</th>
+                </tr>
+                {foreach $relations_list as $m}
+                    <tr>
+                        <td>{$m['first_name']} {$m['last_name']}</td>
+                        <td>{$m['first_name2']} {$m['last_name2']}</td>
+                        <td>{$m['name']}</td>
+                        <td>{$m['description']}</td>
+                        <td class="text-center">
+                            <form method="post" onsubmit="return confirm('Do you really want to delete this relation?')" 
+                                  action="{link delete_relations}?id_relation={$m['id_relation']}">
+                                <button class="btn-sm btn-danger">
+                                <span class="fa fa-trash"></span> 
+                                </button>
+                             </form>
+
+                    </tr>
+                {/foreach}
+            {else}
+                <label>There are no relations.</label>
+            {/if}
+            </tr>
+        </table>
+
+
+
+        <!--  Strankovanie -->
+        <table id="pagination">
+            <tr>
+                {for $i = 0; $i < $total_pages; $i++}  
+                    <td>
+                        {if $i == $page}
+                            <span class="btn btn-sm btn-primary">{$i + 1}</span>
+                        {else}
+                            <a href="{link relations}?page={$i}&limit={$limit}">{$i + 1}</a>
+                        {/if}
+                    
+                    </td>
+                {/for}
+            </tr>
+        </table> 
+    </div>
+{/block}h

@@ -1,0 +1,67 @@
+    {extends layout.latte}
+
+
+    {block title}Create a meeting{/block}
+
+    {block body}
+
+    <!-- Sem vypiseme pripadnu hlasku -->
+        {if isset($message)}
+            <p>{$message}</p>
+        {/if}
+
+        <div class="container">
+            <h1>New meeting</h1>
+
+        <form method="post">
+            <div class="form-row">
+                <!-- Start -->
+                <div class="col-sm-3 form-group">    
+                    <label for="start">Start</label>
+                    <input class="form-control" type="date" name="start" placeholder="Start" required value="{$formData['start']}">
+                </div>
+                <!-- Description -->
+                <div class="col-sm-5 form-group">
+                    <label for="description">Description</label> 
+                    <input class="form-control" type="text" name="description" placeholder="Description" required value="{$formData['description']}">
+                </div>
+                <!-- Duration -->
+                <div class="col-sm-3 form-group">
+                    <label for="duration">Duration</label> 
+                    <input class="form-control" type="text" name="duration" placeholder="hh:mm:ss" required value="{$formData['duration']}">
+                </div>
+            </div>
+    
+
+            <div class="form-row">
+
+                <!-- City -->
+                <div class="col-sm-2 form-group"> 
+                    <label for="zip">City</label>
+                    <input class="form-control" type="text" name="city" placeholder="City" value="{$formData['city']}">
+                </div>
+            	<!-- Street  name -->
+            	<div class="col-sm-3 form-group"> 
+            		<label for="city">Street name</label>
+                    <input class="form-control" type="text" name="street_name" placeholder="Street name" value="{$formData['street_name']}">
+                    <input hidden="True" class="form-control" type="text" name="id_location" value="
+                    {$formData['street_number']}">
+            	</div>
+            	<!-- Street number -->
+            	<div class="col-sm-4 form-group"> 
+            		<label for="city">Street number</label>
+                    <input class="form-control" type="number" name="street_number" placeholder="Street number" value="{$formData['street_number']}">
+            	</div>
+             	<!-- ZIP -->
+            	<div class="col-sm-2 form-group"> 
+            		<label for="zip">ZIP</label>
+                    <input class="form-control" type="text" name="zip" placeholder="ZIP" value="{$formData['zip']}">
+            	</div>
+            </div> 
+
+            <br>
+            <button type="submit" class="btn btn-success">
+                <span class="fa fa-plus"></span>Add a meeting
+            </button>
+        </form>
+    </div>   

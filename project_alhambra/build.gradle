@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group 'cz.mendelu.pjj'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+def urlFile = { String url  ->
+    File file = new File("$buildDir/dependencies/${url.substring(url.lastIndexOf('/'))}")
+    file.parentFile.mkdirs()
+    if (!file.exists()) {
+        new URL(url).withInputStream { downloadStream ->
+            file.withOutputStream { fileOut ->
+                fileOut << downloadStream
+            }
+        }
+    }
+    files(file.absolutePath)
+}
+
+dependencies {
+    compile urlFile('https://akela.mendelu.cz/~xkoloma1/pjj/libs/greenfoot-runner-dist-LAST.jar')
+
+    compile 'com.google.code.gson:gson:2.8.6'
+    testCompile "org.junit.jupiter:junit-jupiter:5.+"
+}

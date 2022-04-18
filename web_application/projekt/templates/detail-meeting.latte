@@ -1,0 +1,51 @@
+{extends layout.latte}
+
+
+{block title}Detail of meeting{/block}
+
+{block body}
+    <br>
+    <div class="container">
+        <h1>{include title}</h1>
+        <h2>Time of meeting: {$meeting}</h2>
+        <table class="table table-striped">
+            {if $joined<>null}
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Delete</th>
+                </tr>
+                {foreach $joined as $u}
+                    <tr>
+                        <td>{$u['first_name']}</td>
+                        <td>{$u['last_name']}</td>
+                        <td>
+                            <form method="post" onsubmit="return confirmDelete({$u['first_name']} + ' ' + {$u['last_name']})" action="{link person_delete_meeting}?id_person={$u['id_person']}">
+                                <button class="btn-sm btn-danger">
+                                    <span class="fa fa-minus-square"></span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {/foreach}
+            {else}
+                <label>This meeting has no participants.</label>
+            {/if}
+        </table>
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                <a class="nav-link" href="{link meetings}"><span class="fa fa-handshake"></span> Back to list</a>
+            </div>
+        </div>
+        <br><br>
+    </div>
+
+
+
+        <script type="text/javascript">
+        function confirmDelete(name) {
+            return confirm('Do you really want to delete ' + name + '?');
+        }
+    </script>
+
+{/block}

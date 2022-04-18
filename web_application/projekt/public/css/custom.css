@@ -1,0 +1,25 @@
+/*
+  place custom CSS definitions into this file to override Bootstrap
+*/
+
+
+nav {
+	float: left;       /* zarovnanie doľava */
+	margin: 25px;
+}
+ 
+ /* bez odražiek */
+nav ul {
+	list-style: none;
+}
+
+/* medze medzi riadkami */
+nav li {
+	margin: 20px;
+
+}
+
+#pagination td {
+	margin: 0 10px;
+	display: inline-block;
+}

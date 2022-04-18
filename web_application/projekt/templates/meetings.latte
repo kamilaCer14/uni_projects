@@ -1,0 +1,71 @@
+{extends layout.latte}
+
+
+{block title}Meetings{/block}
+
+{block body}
+    <div class="container">
+        <form action="{link searchMeetings}" method="get">
+            <label>Search:</label>
+            <input type="text" name="q" class="form-control">   
+            <br>
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+
+        </form>
+
+        <a href="{link newMeeting}" class="btn btn-success">
+            <span class="fa fa-plus"></span> Create new meeting
+        </a>
+
+        <br>
+        <h1>{include title}</h1>
+        <br>
+        <table class="table table-striped">
+            {if $meetings_list<>null}
+                <tr>
+                    <th>Start</th>
+                    <th>Duration</th>
+                    <th>Description</th>
+                    <th>City</th>
+                    <th>Street name</th>
+                    <th>Street number</th>
+                    <th>Details</th>
+                </tr>
+                {foreach $meetings_list as $m}
+                    <tr>
+                        <td>{$m['start']}</td>
+                        <td>{$m['duration']}</td>
+                        <td>{$m['description']}</td>
+                        <td>{$m['city']}</td>
+                        <td>{$m['street_name']}</td>
+                        <td>{$m['street_number']}</td>
+                        <td class="text-center"><a href="{link detail-meeting}?id={$m['id_meeting']}"><span class="nav-link fa fa-eye"></span></a></td>
+                    </tr>
+                {/foreach}
+            {else}
+                <label>There are no meeting planned.</label>
+            {/if}
+            </tr>
+        </table>
+
+
+
+        <!--  Strankovanie -->
+        <table id="pagination">
+            <tr>
+                {for $i = 0; $i < $total_pages; $i++}  
+                    <td>
+                        {if $i == $page}
+                            <span class="btn btn-sm btn-primary">{$i + 1}</span>
+                        {else}
+                            <a href="{link meetings}?page={$i}&limit={$limit}">{$i + 1}</a>
+                        {/if}
+                    
+                    </td>
+                {/for}
+            </tr>
+        </table> 
+    </div>
+{/block}
